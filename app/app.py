@@ -100,11 +100,18 @@ def registro():
 
         hashed = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
 
+
         try:
             # --- Insertar en tbl_persona ---
             cursor = db.get_cursor(dict_cursor=False)
             cursor.callproc("sp_insertar_tbl_persona", (primer_nombre, primer_apellido, fecha_nacimiento))
-            id_persona = cursor.fetchone()[0]
+            result = None
+            for r in cursor.stored_results():
+                result = r.fetchone()
+            if not result or not result[0]:
+                cursor.close()
+                raise Exception("No se pudo obtener id_persona")
+            id_persona = result[0]
             cursor.close()
 
             # --- Insertar en tbl_adicional_persona ---
@@ -112,13 +119,13 @@ def registro():
             cursor.callproc("sp_insertar_tbl_adicional_persona", (
                 direccion, telefono, email, id_persona, int(id_rol), int(genero), id_localidad
             ))
-            cursor.fetchone()
             cursor.close()
 
             # --- Insertar en tbl_usuarios ---
             cursor = db.get_cursor(dict_cursor=False)
-            cursor.callproc("sp_insertar_tbl_usuarios", (username, hashed.decode('utf-8'), id_persona))
-            cursor.fetchone()
+            cursor.callproc("sp_insertar_tbl_usuarios", (
+                username, hashed.decode('utf-8'), id_persona
+            ))
             cursor.close()
 
             db.mysql.connection.commit()
