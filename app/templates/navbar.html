@@ -1,0 +1,20 @@
+<header>
+    <nav class="navbar">
+        <div class="logo">🌱 Ecorisk</div>
+        <ul class="nav-links">
+            <li><a href="{{ url_for('home', lang=lang) }}">{{ texts["home_title"] }}</a></li>
+            <li><a href="{{ url_for('login', lang=lang) }}">{{ texts["login_title"] }}</a></li>
+            <li><a href="{{ url_for('registro', lang=lang) }}">{{ texts["register_title"] }}</a></li>
+            <li><a href="{{ url_for('menu_principal', lang=lang) }}">{{ texts["menu_title"] }}</a></li>
+        </ul>
+
+        <!-- Selector de idioma -->
+        <form method="get" action="">
+            <select name="lang" onchange="this.form.submit()" class="language-selector">
+                <option value="es" {% if lang == "es" %}selected{% endif %}>🇪🇸 Español</option>
+                <option value="en" {% if lang == "en" %}selected{% endif %}>🇬🇧 English</option>
+                <option value="fr" {% if lang == "fr" %}selected{% endif %}>🇫🇷 Français</option>
+            </select>
+        </form>
+    </nav>
+</header>

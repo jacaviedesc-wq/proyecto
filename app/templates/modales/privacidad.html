@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Aviso de Privacidad - Ecorisk</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style_privacidad.css') }}">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Aviso de Privacidad y Tratamiento de Datos</h1>
+        <p>En <strong>Ecorisk</strong> respetamos tu privacidad. La información personal que recopilemos (como correo
+            electrónico, nombre de usuario y datos de acceso) será utilizada únicamente para la gestión de cuentas,
+            personalización de la experiencia y envío de notificaciones relacionadas con nuestros servicios.</p>
+
+        <p>No compartiremos tu información con terceros sin tu consentimiento, salvo que sea requerido por ley. Al
+            aceptar este aviso, autorizas el tratamiento de tus datos conforme a lo aquí descrito.</p>
+
+        <form method="post" action="{{ url_for('privacidad') }}">
+            <button type="submit" name="accion" value="aceptar" class="btn aceptar">Aceptar</button>
+            <button type="submit" name="accion" value="rechazar" class="btn rechazar">Rechazar</button>
+        </form>
+    </div>
+</body>
+
+</html>

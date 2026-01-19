@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="{{ lang }}">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ texts["register_report_title"] }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style_registro_reporte.css') }}">
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+
+<main class="ticket-container">
+    <!-- Header -->
+    <header class="ticket-header">
+        <div class="header-icon"><i class="fas fa-leaf"></i></div>
+        <h1>{{ texts["register_report_title"] }}</h1>
+        <p>{{ texts["register_report_subtitle"] }}</p>
+    </header>
+
+    <!-- Formulario -->
+    <form action="{{ url_for('registro_reporte', lang=lang) }}" method="POST" enctype="multipart/form-data" class="ticket-form">
+
+        <!-- Sección Localización -->
+        <div class="form-section">
+            <h3><i class="fas fa-map-marker-alt"></i> {{ texts["location_section"] }}</h3>
+
+            <div class="form-group">
+                <label for="id_localidad">{{ texts["localidad_label"] }} *</label>
+                <select name="id_localidad" id="id_localidad" required>
+                    <option value="">{{ texts["select_placeholder"] }}</option>
+                    {% for loc in localidades %}
+                        <option value="{{ loc['id_localidad'] }}">{{ loc['nombre_localidad'] }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="id_barrio">{{ texts["barrio_label"] }} *</label>
+                <input type="text" id="buscarBarrio" placeholder="{{ texts['search_placeholder'] }}">
+                <select name="id_barrio" id="id_barrio" required>
+                    <option value="">{{ texts["select_placeholder"] }}</option>
+                    {% for bar in barrios %}
+                        <option value="{{ bar['id_barrio'] }}">{{ bar['nombre_barrio'] }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <!-- Script del buscador de barrios -->
+            <script>
+                const buscar = document.getElementById('buscarBarrio');
+                const select = document.getElementById('id_barrio');
+
+                buscar.addEventListener('input', () => {
+                    const filter = buscar.value.toLowerCase();
+                    for (let i = 0; i < select.options.length; i++) {
+                        const option = select.options[i];
+                        if (option.value === "") continue; // mantiene el "Seleccione..."
+                        const text = option.text.toLowerCase();
+                        option.style.display = text.includes(filter) ? "" : "none";
+                    }
+                });
+                </script>
+        </div>
+
+        <!-- Sección Categorías e Impactos -->
+        <div class="form-section">
+            <h3><i class="fas fa-leaf"></i> {{ texts["impact_section"] }}</h3>
+
+            <div class="form-group">
+                <label for="id_categoria">{{ texts["categoria_label"] }} *</label>
+                <select name="id_categoria" id="id_categoria" required>
+                    <option value="">{{ texts["select_placeholder"] }}</option>
+                    {% for cat in categorias %}
+                        <option value="{{ cat['id_categoria'] }}">{{ cat['nombre_categoria'] }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="id_impacto">{{ texts["impacto_label"] }} *</label>
+                <select name="id_impacto" id="id_impacto" required>
+                    <option value="">{{ texts["select_placeholder"] }}</option>
+                    {% for imp in impactos %}
+                        <option value="{{ imp['id_impacto'] }}">{{ imp['tipo_impacto'] }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="descripcion">{{ texts["descripcion_label"] }} *</label>
+                <textarea name="descripcion" id="descripcion" rows="4" required></textarea>
+            </div>
+        </div>
+
+        <!-- Sección Evidencia -->
+        <div class="form-section">
+            <h3><i class="fas fa-file-upload"></i> {{ texts["evidencia_section"] }}</h3>
+            <div class="file-upload-container">
+                <div class="file-upload-box">
+                    <div class="upload-placeholder">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <p>{{ texts["upload_placeholder"] }}</p>
+                        <small>{{ texts["upload_optional"] }}</small>
+                    </div>
+                    <input type="file" name="evidencia" accept="image/*">
+                </div>
+            </div>
+        </div>
+
+        <!-- Botones -->
+        <div class="form-actions">
+            <button type="submit" class="btn-submit">{{ texts["register_report_button"] }}</button>
+            <a href="{{ url_for('menu_principal', lang=lang) }}" class="btn-cancel">{{ texts["cancel_button"] }}</a>
+        </div>
+
+        <!-- Mensajes Flash -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <div class="flash-messages">
+                    {% for category, message in messages %}
+                        <div class="alert {% if category == 'error' %}alert-error{% elif category == 'success' %}alert-success{% endif %}">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+
+    </form>
+
+    <!-- Footer -->
+    <footer class="ticket-footer">
+        <p>{{ texts["footer_quote"] }}</p>
+    </footer>
+</main>
+
+</body>
+</html>

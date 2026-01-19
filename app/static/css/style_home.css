@@ -1,0 +1,598 @@
+/* SVG decorativo superior */
+.svg-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 220px;
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* Animaciones*/
+.animate__slower {
+    animation-duration: 2.2s !important;
+}
+
+/* Glassmorphism */
+.glass-bg {
+    background: rgba(255,255,255,0.22);
+    backdrop-filter: blur(10px) saturate(1.3);
+    border-radius: 32px;
+    box-shadow: 0 12px 48px rgba(44,110,73,0.13);
+    padding: 2.5rem 0 0 0;
+}
+.glass-card {
+    background: rgba(255,255,255,0.45);
+    backdrop-filter: blur(12px) saturate(1.4);
+    border-radius: 22px;
+    box-shadow: 0 8px 32px rgba(44,110,73,0.13);
+    border: 2px solid rgba(44,110,73,0.10);
+}
+
+.benefit-card, .testimonial-card, .faq-card {
+    box-shadow: 0 4px 32px #b2f7ef, 0 1.5px 8px #2e7d3222;
+}
+.benefit-card:hover, .testimonial-card:hover, .faq-card:hover {
+    box-shadow: 0 12px 48px #b2f7ef, 0 2px 16px #2e7d3233;
+    transform: translateY(-10px) scale(1.05);
+}
+
+/* Hero más impactante */
+.logo-ecorisk-pro {
+    box-shadow: 0 0 32px #b2f7ef, 0 0 0 #fff;
+    border: 4px solid #f1c40f33;
+}
+.main-title-pro {
+    letter-spacing: 1.5px;
+    text-shadow: 0 2px 8px #b2f7ef99;
+}
+.subtitle-pro {
+    text-shadow: 0 1px 4px #b2f7ef55;
+}
+
+/* Ajuste de z-index para que el contenido esté sobre el SVG */
+.home-main, .landing, .glass-bg, .hero-pro, .glass-card {
+    position: relative;
+    z-index: 2;
+}
+/* Fondo degradado animado */
+body {
+    background: linear-gradient(120deg, #e0ffe7 0%, #b2f7ef 50%, #f1f8e9 100%);
+    background-size: 200% 200%;
+    animation: gradientMove 10s ease-in-out infinite;
+}
+@keyframes gradientMove {
+    0% {background-position: 0% 50%;}
+    50% {background-position: 100% 50%;}
+    100% {background-position: 0% 50%;}
+}
+
+/* Glassmorphism */
+.glass-bg {
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(6px) saturate(1.2);
+    border-radius: 24px;
+    box-shadow: 0 8px 32px rgba(44,110,73,0.10);
+    padding: 1.5rem 0 0 0;
+}
+.glass-card {
+    background: rgba(255,255,255,0.35);
+    backdrop-filter: blur(8px) saturate(1.3);
+    border-radius: 18px;
+    box-shadow: 0 4px 24px rgba(44,110,73,0.10);
+    border: 1.5px solid rgba(44,110,73,0.08);
+}
+
+/* Sección de clientes */
+.clients-section {
+    margin: 2.5rem 0 2rem 0;
+    text-align: center;
+}
+.clients-logos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2.5rem;
+    margin-top: 1.2rem;
+}
+.clients-logos img {
+    height: 48px;
+    filter: grayscale(1) brightness(0.8) drop-shadow(0 2px 8px #b2f7ef);
+    opacity: 0.8;
+    transition: filter 0.3s, opacity 0.3s, transform 0.2s;
+}
+.clients-logos img:hover {
+    filter: grayscale(0) brightness(1) drop-shadow(0 4px 16px #2e7d32);
+    opacity: 1;
+    transform: scale(1.08);
+}
+
+/* FAQ */
+.faq-section {
+    margin: 3rem 0 2rem 0;
+    text-align: center;
+}
+.faq-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 2rem;
+    margin-top: 1.5rem;
+}
+.faq-card {
+    padding: 1.5rem 1.2rem 1.2rem 1.2rem;
+    min-height: 100px;
+    text-align: left;
+}
+.faq-card h4 {
+    color: #2c6e49;
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+}
+.faq-card p {
+    color: #34495e;
+    font-size: 1.02rem;
+}
+
+/* Mejorar cards y responsividad */
+.benefit-card, .testimonial-card, .faq-card {
+    transition: box-shadow 0.3s, transform 0.2s;
+}
+.benefit-card:hover, .testimonial-card:hover, .faq-card:hover {
+    box-shadow: 0 8px 32px #b2f7ef;
+    transform: translateY(-6px) scale(1.03);
+}
+
+@media (max-width: 600px) {
+    .clients-logos {
+        gap: 1.2rem;
+    }
+    .clients-logos img {
+        height: 32px;
+    }
+}
+/* --- LANDING PAGE PROFESIONAL --- */
+.landing {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0;
+}
+.hero-pro {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    min-height: 60vh;
+    margin-bottom: 2.5rem;
+    position: relative;
+    z-index: 1;
+}
+.hero-content {
+    flex: 1 1 350px;
+    min-width: 320px;
+    text-align: left;
+    padding-left: 2rem;
+    z-index: 2;
+}
+.logo-ecorisk-pro {
+    width: 120px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.8);
+    box-shadow: 0 8px 32px rgba(44,110,73,0.18);
+    margin-bottom: 1.2rem;
+    display: block;
+}
+.main-title-pro {
+    color: #2e7d32;
+    font-size: 2.7rem;
+    font-weight: bold;
+    margin-bottom: 0.7rem;
+    font-style: italic;
+}
+.subtitle-pro {
+    font-size: 1.25rem;
+    color: #388e3c;
+    margin-bottom: 2.2rem;
+    max-width: 420px;
+}
+.cta-btn-pro {
+    background: linear-gradient(90deg, #2e7d32 60%, #2c6e49 100%);
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    padding: 0.9rem 2.2rem;
+    font-size: 1.1rem;
+    box-shadow: 0 2px 8px rgba(44,110,73,0.10);
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+    text-decoration: none;
+    outline: none;
+    margin-right: 1rem;
+    margin-bottom: 0.5rem;
+    display: inline-block;
+}
+.cta-btn-pro:hover {
+    background: linear-gradient(90deg, #f1c40f 60%, #2c6e49 100%);
+    color: #2c3e50;
+    transform: scale(1.06);
+}
+.cta-btn-secondary-pro {
+    background: linear-gradient(90deg, #388e3c 60%, #2c6e49 100%);
+}
+.cta-btn-secondary-pro:hover {
+    background: linear-gradient(90deg, #f1c40f 60%, #388e3c 100%);
+    color: #2c3e50;
+}
+.hero-graphic {
+    flex: 1 1 320px;
+    min-width: 260px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+}
+.headline-img {
+    width: 100%;
+    max-width: 340px;
+    border-radius: 18px;
+    box-shadow: 0 8px 32px rgba(44,110,73,0.18);
+    opacity: 0.97;
+}
+
+/* BENEFICIOS */
+.benefits-section {
+    margin: 3rem 0 2rem 0;
+    text-align: center;
+}
+.section-title {
+    color: #2c6e49;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    font-weight: bold;
+}
+.benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2rem;
+}
+.benefit-card {
+    background: rgba(255,255,255,0.96);
+    border-radius: 16px;
+    padding: 2rem 1.2rem 1.5rem 1.2rem;
+    box-shadow: 0 6px 24px rgba(44,110,73,0.10);
+    transition: transform 0.25s, box-shadow 0.25s;
+    border-bottom: 4px solid #2e7d32;
+    position: relative;
+}
+.benefit-card:hover {
+    transform: translateY(-8px) scale(1.04);
+    box-shadow: 0 12px 32px rgba(44,110,73,0.18);
+    border-bottom: 4px solid #f1c40f;
+}
+.benefit-card i {
+    font-size: 2.2rem;
+    color: #2c6e49;
+    margin-bottom: 1rem;
+    transition: color 0.3s;
+}
+.benefit-card:hover i {
+    color: #f1c40f;
+}
+.benefit-card h3 {
+    color: #2e7d32;
+    margin-bottom: 0.5rem;
+    font-size: 1.15rem;
+}
+.benefit-card p {
+    color: #34495e;
+    font-size: 1.05rem;
+}
+
+/* TESTIMONIOS */
+.testimonials-section {
+    margin: 3rem 0 2rem 0;
+    text-align: center;
+}
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 2rem;
+    margin-top: 1.5rem;
+}
+.testimonial-card {
+    background: rgba(255,255,255,0.98);
+    border-radius: 14px;
+    padding: 1.5rem 1.2rem 1.2rem 1.2rem;
+    box-shadow: 0 4px 16px rgba(44,110,73,0.10);
+    border-left: 5px solid #2e7d32;
+    font-style: italic;
+    color: #2c3e50;
+    min-height: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.testimonial-card span {
+    font-style: normal;
+    color: #388e3c;
+    font-weight: bold;
+    margin-top: 1rem;
+    font-size: 1rem;
+}
+
+/* CTA FINAL */
+.cta-final-section {
+    margin: 3.5rem 0 2rem 0;
+    text-align: center;
+}
+.cta-btn-final {
+    font-size: 1.2rem;
+    padding: 1.1rem 2.7rem;
+    margin-top: 1.2rem;
+    font-weight: bold;
+    border-radius: 12px;
+    background: linear-gradient(90deg, #f1c40f 60%, #2e7d32 100%);
+    color: #2c3e50;
+    box-shadow: 0 4px 16px rgba(44,110,73,0.10);
+    transition: background 0.3s, transform 0.2s;
+    display: inline-block;
+}
+.cta-btn-final:hover {
+    background: linear-gradient(90deg, #2e7d32 60%, #f1c40f 100%);
+    color: #fff;
+    transform: scale(1.07);
+}
+
+/* RESPONSIVE LANDING */
+@media (max-width: 900px) {
+    .hero-pro {
+        flex-direction: column;
+        text-align: center;
+        padding-left: 0;
+    }
+    .hero-content {
+        padding-left: 0;
+        text-align: center;
+    }
+    .hero-graphic {
+        margin-top: 1.5rem;
+    }
+}
+@media (max-width: 600px) {
+    .main-title-pro {
+        font-size: 2rem;
+    }
+    .headline-img {
+        max-width: 90vw;
+    }
+    .benefits-grid, .testimonials-grid {
+        grid-template-columns: 1fr;
+    }
+}
+/* Fuente */
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: url("../img/fondo.png") no-repeat center center fixed;
+    background-size: cover;
+    color: #2c3e50;
+}
+h1, h2 {
+    text-align: center;
+    color: #2c6e49;
+    margin-bottom: 10px;
+}
+
+p {
+    text-align: center;
+    font-size: 1.1em;
+    color: #34495e;
+}
+
+/* Inciio */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(44, 110, 73, 0.95);
+    padding: 10px 20px;
+    color: white;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar .logo {
+    display: flex;
+    align-items: center;
+}
+
+.navbar .logo img {
+    height: 40px;
+    margin-right: 10px;
+}
+
+.navbar .logo span {
+    font-size: 1.3em;
+    font-weight: bold;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links li {
+    position: relative;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: #f1c40f;
+}
+
+/* Seleccionar idioma */
+.language-selector {
+    background: white;
+    border: none;
+    padding: 0.3rem;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+/* Contenido */
+.home-main {
+    padding: 2.5rem 1rem 1rem 1rem;
+    text-align: center;
+    min-height: 80vh;
+}
+
+.hero-section {
+    margin-bottom: 2.5rem;
+}
+
+.logo-ecorisk {
+    filter: drop-shadow(0 4px 16px rgba(44,110,73,0.25));
+    border-radius: 50%;
+    background: rgba(255,255,255,0.7);
+    padding: 10px;
+    transition: transform 0.4s;
+}
+.logo-ecorisk:hover {
+    transform: scale(1.08) rotate(-3deg);
+    box-shadow: 0 8px 32px rgba(44,110,73,0.18);
+}
+
+.main-title {
+    color: #2e7d32;
+    font-style: italic;
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.subtitle {
+    font-size: 1.3rem;
+    color: #388e3c;
+    margin-bottom: 2rem;
+}
+
+.features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2rem;
+    margin: 2rem 0 2.5rem 0;
+}
+
+.feature-card {
+    background: rgba(255,255,255,0.92);
+    border-radius: 16px;
+    padding: 2rem 1.2rem 1.5rem 1.2rem;
+    box-shadow: 0 6px 24px rgba(44,110,73,0.10);
+    transition: transform 0.25s, box-shadow 0.25s;
+    position: relative;
+    overflow: hidden;
+    border-bottom: 4px solid #2e7d32;
+}
+.feature-card:hover {
+    transform: translateY(-8px) scale(1.04);
+    box-shadow: 0 12px 32px rgba(44,110,73,0.18);
+    border-bottom: 4px solid #f1c40f;
+}
+.feature-card i {
+    font-size: 2.5rem;
+    color: #2c6e49;
+    margin-bottom: 1rem;
+    transition: color 0.3s;
+}
+.feature-card:hover i {
+    color: #f1c40f;
+}
+.feature-card h2 {
+    color: #2e7d32;
+    margin-bottom: 0.5rem;
+    font-size: 1.3rem;
+}
+.feature-card p {
+    color: #34495e;
+    font-size: 1.05rem;
+}
+
+.cta-buttons {
+    margin-top: 2.5rem;
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+}
+.cta-btn {
+    background: linear-gradient(90deg, #2e7d32 60%, #2c6e49 100%);
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    padding: 0.9rem 2.2rem;
+    font-size: 1.1rem;
+    box-shadow: 0 2px 8px rgba(44,110,73,0.10);
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+    text-decoration: none;
+    outline: none;
+}
+.cta-btn:hover {
+    background: linear-gradient(90deg, #f1c40f 60%, #2c6e49 100%);
+    color: #2c3e50;
+    transform: scale(1.06);
+}
+.cta-btn-secondary {
+    background: linear-gradient(90deg, #388e3c 60%, #2c6e49 100%);
+}
+.cta-btn-secondary:hover {
+    background: linear-gradient(90deg, #f1c40f 60%, #388e3c 100%);
+    color: #2c3e50;
+}
+
+/* Dashboard de la people */
+.dashboard {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.card {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+    transition: transform 0.2s ease;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    cursor: pointer;
+}
+
+.card i {
+    font-size: 2rem;
+    color: #1565c0;
+    margin-bottom: 1rem;
+}
+
+/* pie de pagina */
+footer {
+    background: #2e7d32;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    margin-top: 2rem;
+}

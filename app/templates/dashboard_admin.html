@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>EcoRisk Admin Dashboard</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            primary: "#228B22",
+          },
+          fontFamily: {
+            display: ["Poppins", "sans-serif"],
+          },
+          borderRadius: {
+            DEFAULT: "0.75rem",
+          },
+        },
+      },
+    };
+</script>
+<style>
+body {
+    font-family: "Poppins", sans-serif;
+    background: url('static/img/fondo_login.png') no-repeat center center fixed;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    color: #1a202c;
+}
+
+.boton-enlace {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #2c7a2c;
+    color: #fff;
+    border: none;
+    padding: 12px 32px;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+    box-shadow: 0 2px 8px rgba(44, 122, 44, 0.08);
+    min-width: 200px;
+    margin: 10px;
+}
+
+.boton-enlace i {
+    margin-right: 10px;
+    font-size: 1.2em;
+}
+
+.boton-enlace:hover, .boton-enlace:focus {
+    background-color: #256a25;
+    transform: translateY(-2px) scale(1.03);
+    color: #fff;
+    text-decoration: none;
+}
+</style>
+</head>
+<body>
+
+<main class="relative w-full max-w-7xl mx-auto flex flex-col items-center justify-center p-8">
+
+    <!-- Panda y Tucán -->
+    <img alt="Toucan mascot" class="absolute bottom-4 left-4 w-32 h-32 lg:w-48 lg:h-48" src="static/img/Tucan.png"/>
+    <img alt="Panda mascot" class="absolute right-8 top-1/2 -translate-y-1/2 w-64 h-auto" src="static/img/Panda.png"/>
+
+    <div class="text-center mb-12">
+        <h1 class="text-5xl md:text-6xl font-bold mb-4">Welcome Admin!</h1>
+        <p class="text-lg">Manage your EcoRisk application from here.</p>
+    </div>
+
+    <div class="w-full flex flex-col lg:flex-row items-center justify-center gap-6">
+        <a class="boton-enlace" href="{{ url_for('modal_ver_reportes', dashboard='dashboard_admin', lang=lang) }}">
+            <i class="material-icons-outlined text-4xl mb-2">description</i>
+            Ver Reportes
+        </a>
+        <a class="boton-enlace" href="#">
+            <i class="material-icons-outlined text-4xl mb-2">folder_managed</i>
+            Gestionar Reportes
+        </a>
+        <a class="boton-enlace" href="#">
+            <i class="material-icons-outlined text-4xl mb-2">group</i>
+            Gestionar Usuarios
+        </a>
+    </div>
+
+</main>
+
+</body>
+</html>

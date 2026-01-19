@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="{{ lang }}">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ texts['home_title'] }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style_home.css') }}">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='img/logo_ecorisk.png') }}">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">
+            <img src="{{ url_for('static', filename='img/logo_ecorisk.png') }}" alt="Logo">
+            <span>Ecorisk</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="{{ url_for('home', lang=lang) }}">Home</a></li>
+            <li><a href="{{ url_for('menu_principal', lang=lang) }}">{{ texts['menu_title'] }}</a></li>
+            <li><a href="{{ url_for('login', lang=lang) }}">{{ texts['login_title'] }}</a></li>
+            <li><a href="{{ url_for('registro', lang=lang) }}">{{ texts['register_title'] }}</a></li>
+        </ul>
+        <form method="get" action="" class="lang-form">
+            <select name="lang" class="language-selector" onchange="this.form.submit()">
+                <option value="es" {% if lang == 'es' %}selected{% endif %}>🇪🇸 Español</option>
+                <option value="en" {% if lang == 'en' %}selected{% endif %}>🇬🇧 English</option>
+                <option value="fr" {% if lang == 'fr' %}selected{% endif %}>🇫🇷 Français</option>
+            </select>
+        </form>
+    </nav>
+
+    <div class="home-container">
+        <!-- Fondo de pepitas-->
+        <svg class="svg-bg" width="100%" height="220" viewBox="0 0 1440 220" fill="none"
+             xmlns="http://www.w3.org/2000/svg"
+             style="position:absolute;top:0;left:0;z-index:0;pointer-events:none;">
+            <path d="M0,160 C360,220 1080,80 1440,160 L1440,0 L0,0 Z" fill="#b2f7ef" fill-opacity="0.18"/>
+            <circle cx="200" cy="80" r="32" fill="#2e7d32" fill-opacity="0.10"/>
+            <circle cx="1200" cy="120" r="24" fill="#f1c40f" fill-opacity="0.13"/>
+        </svg>
+
+        <h1>{{ texts['home_title'] }}</h1>
+        <p>{{ texts['home_subtitle'] }}</p>
+    </div>
+
+    <footer>
+        <p>{{ texts['slogan'] }}</p>
+    </footer>
+
+</body>
+</html>

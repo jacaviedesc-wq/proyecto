@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="{{ lang }}">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ texts["register_title"] }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style_register.css') }}">
+</head>
+<body>
+    {% include "navbar.html" %}
+    <main class="register-page">
+        <div class="register-container">
+            <h1>{{ texts["register_title"] }}</h1>
+
+            <form method="POST" action="{{ url_for('registro', lang=lang) }}">
+                <!-- Primera fila: Primer Nombre y Segundo Nombre -->
+                <div class="fila">
+                    <div class="campo">
+                        <label>Primer Nombre</label>
+                        <input type="text" name="primer_nombre" placeholder="Ingrese su primer nombre" required>
+                    </div>
+                    <div class="campo">
+                        <label>Segundo Nombre</label>
+                        <input type="text" name="segundo_nombre" placeholder="Ingrese su segundo nombre">
+                    </div>
+                </div>
+
+                <!-- Segunda fila: Primer Apellido y Segundo Apellido -->
+                <div class="fila">
+                    <div class="campo">
+                        <label>Primer Apellido</label>
+                        <input type="text" name="primer_apellido" placeholder="Ingrese su primer apellido" required>
+                    </div>
+                    <div class="campo">
+                        <label>Segundo Apellido</label>
+                        <input type="text" name="segundo_apellido" placeholder="Ingrese su segundo apellido">
+                    </div>
+                </div>
+
+                <!-- Tercera fila: Fecha de nacimiento y Género -->
+                <div class="fila">
+                    <div class="campo">
+                        <label>Fecha de nacimiento</label>
+                        <input type="date" name="fecha_nacimiento" max="{{ current_date }}" required>
+                    </div>
+                    <div class="campo">
+                        <label>Género</label>
+                        <select name="genero" required>
+                            <option value="">Seleccione</option>
+                            <option value="1">Femenino</option>
+                            <option value="2">Masculino</option>
+                            <option value="3">Otro</option>
+                            <option value="4">Prefiero no decirlo</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Cuarta fila: Rol -->
+                <div class="fila">
+                    <div class="campo">
+                        <label>Tipo de rol</label>
+                        <select name="id_rol" required>
+                            <option value="">Seleccione</option>
+                            <option value="1">Común</option>
+                            <option value="2">Administrativo</option>
+                            <option value="3">Autoridad</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Quinta fila: Dirección y Teléfono -->
+                <div class="fila">
+                    <div class="campo">
+                        <label>Dirección</label>
+                        <input type="text" name="direccion" placeholder="Ingrese su dirección" required>
+                    </div>
+                    <div class="campo">
+                        <label>Teléfono</label>
+                        <input type="text" name="telefono" placeholder="Ingrese su teléfono" required>
+                    </div>
+                </div>
+
+                <!-- Sexta fila: Correo y Usuario -->
+                <div class="fila">
+                    <div class="campo">
+                        <label>Correo electrónico</label>
+                        <input type="email" name="email" placeholder="Ingrese su correo (institucional o personal)" 
+                               pattern="^[a-zA-Z0-9._%+-]+@(gmail\.com|outlook\.com|hotmail\.com|yahoo\.com|[a-zA-Z0-9.-]+\.edu\.co)$" required>
+                    </div>
+                    <div class="campo">
+                        <label>{{ texts["register_user"] }}</label>
+                        <input type="text" name="username" placeholder="Ingrese su usuario" required>
+                    </div>
+                </div>
+
+                <!-- Séptima fila: Contraseña y Confirmación -->
+                <div class="fila">
+                    <div class="campo">
+                        <label>{{ texts["register_pass"] }}</label>
+                        <input type="password" name="password" placeholder="Ingrese su contraseña" required>
+                    </div>
+                    <div class="campo">
+                        <label>Confirmar contraseña</label>
+                        <input type="password" name="confirm_password" placeholder="Repita su contraseña" required>
+                    </div>
+                </div>
+
+                <button type="submit">{{ texts["register_button"] }}</button>
+            </form>
+
+            <p>¿Ya tienes cuenta?</p>
+            <a href="{{ url_for('login', lang=lang) }}" class="link-login">{{ texts["login_link"] }}</a>
+        </div>
+    </main>
+    {% include "pie_de_pagina.html" %}
+</body>
+</html>

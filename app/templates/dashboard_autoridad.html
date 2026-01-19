@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="{{ lang }}">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ texts["user_type_authority"] }} - EcoRisk</title>
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='img/logo_ecorisk.png') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style_dashboard_autoridad.css') }}">
+</head>
+<body>
+    <main class="dashboard-page">
+        <div class="lang-dropdown">
+            <button class="dropbtn">{{ lang|upper }}</button>
+            <div class="dropdown-content">
+                <a href="?lang=es">Español</a>
+                <a href="?lang=en">English</a>
+                <a href="?lang=fr">Français</a>
+            </div>
+        </div>
+
+        <section class="dashboard-container">
+            <h1>{{ texts["user_type_authority"] }}</h1>
+            <p class="bienvenida">{{ texts["dashboard_greeting"] }} <strong>{{ session['usuario'] }}</strong></p>
+            <p class="descripcion">{{ texts["dashboard_authority_subtitle"] }}</p>
+
+            <div class="acciones">
+                <!-- Botón para crear nuevo ticket/reporte -->
+                <button onclick="abrirModalCrearTicket()">Crear Nuevo Reporte</button>
+                
+                <!-- SOLUCIÓN: Enlace normal en lugar de JavaScript -->
+                <a href="{{ url_for('modal_ver_reportes', lang=lang) }}" class="boton-enlace">
+                    Ver Reportes Existentes
+                </a>
+                
+                <button>Gestionar Reportes</button>
+            </div>
+        </section>
+
+        <!-- Modal para crear nuevo ticket -->
+        <div id="modalCrearTicket" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="cerrarModalCrearTicket()">&times;</span>
+                <h2>Crear Nuevo Reporte Ambiental</h2>
+                
+                <form id="formCrearTicket" method="POST" action="{{ url_for('registrar_reporte') }}" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="descripcion">Descripción del Problema *</label>
+                        <textarea id="descripcion" name="descripcion" rows="4" required placeholder="Describa detalladamente el problema ambiental..."></textarea>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="id_categoria">Categoría *</label>
+                            <select id="id_categoria" name="id_categoria" required>
+                                <option value="">Seleccione una categoría</option>
+                                {% for categoria in categorias %}
+                                    <option value="{{ categoria.id_categoria }}">{{ categoria.nombre_categoria }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="id_severidad">Severidad *</label>
+                            <select id="id_severidad" name="id_severidad" required>
+                                <option value="">Seleccione severidad</option>
+                                {% for severidad in severidades %}
+                                    <option value="{{ severidad.id_severidad }}">{{ severidad.nivel_severidad }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="id_localidad">Localidad *</label>
+                            <select id="id_localidad" name="id_localidad" required>
+                                <option value="">Seleccione localidad</option>
+                                {% for localidad in localidades %}
+                                    <option value="{{ localidad.id_localidad }}">{{ localidad.nombre_localidad }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="id_barrio">Barrio *</label>
+                            <select id="id_barrio" name="id_barrio" required>
+                                <option value="">Seleccione barrio</option>
+                                {% for barrio in barrios %}
+                                    <option value="{{ barrio.id_barrio }}">{{ barrio.nombre_barrio }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="id_impacto">Impacto Ambiental *</label>
+                        <select id="id_impacto" name="id_impacto" required>
+                            <option value="">Seleccione impacto</option>
+                            {% for impacto in impactos %}
+                                <option value="{{ impacto.id_impacto }}">{{ impacto.tipo_impacto }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="evidencia">Evidencia (Opcional)</label>
+                        <input type="file" id="evidencia" name="evidencia" accept="image/*,.pdf,.doc,.docx">
+                        <small>Formatos permitidos: imágenes, PDF, Word</small>
+                    </div>
+
+                    <div class="form-buttons">
+                        <button type="submit" class="btn-primary">Crear Reporte</button>
+                        <button type="button" class="btn-secondary" onclick="cerrarModalCrearTicket()">Cancelar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <img src="{{ url_for('static', filename='img/Jirafa.png') }}" class="decoracion decoracion-jirafa" alt="Jirafa">
+        <img src="{{ url_for('static', filename='img/hoja animada.png') }}" class="decoracion decoracion-hoja" alt="Hoja">
+    </main>
+
+    {% include "pie_de_pagina.html" %}
+
+    <script>
+        // Funciones para manejar el modal
+        function abrirModalCrearTicket() {
+            document.getElementById('modalCrearTicket').style.display = 'block';
+        }
+
+        function cerrarModalCrearTicket() {
+            document.getElementById('modalCrearTicket').style.display = 'none';
+        }
+
+        // Cerrar modal al hacer clic fuera
+        window.onclick = function(event) {
+            const modal = document.getElementById('modalCrearTicket');
+            if (event.target === modal) {
+                cerrarModalCrearTicket();
+            }
+        }
+    </script>
+</body>
+</html>

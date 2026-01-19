@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Términos y Condiciones - Ecorisk</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style_terminos.css') }}">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Términos y Condiciones de Uso</h1>
+        <p>Esta página web es propiedad y está operada por <strong>Ecorisk</strong>. Estos Términos establecen las
+            condiciones bajo las cuales puedes usar nuestra página web y nuestros servicios. Esta página web ofrece a
+            los visitantes información y herramientas para evaluar y gestionar riesgos ambientales. Al acceder o usar la
+            página web, aceptas haber leído, entendido y aceptado estar sujeto a estos Términos.</p>
+
+        <h2>Información relevante</h2>
+        <p>En algunos casos, para adquirir un servicio, será necesario el registro por parte del usuario, con ingreso de
+            datos personales fidedignos y definición de una contraseña. El usuario puede elegir y cambiar la clave de
+            acceso en cualquier momento. <strong>Ecorisk</strong> no asume la responsabilidad en caso de que entregue
+            dicha clave a terceros.</p>
+
+        <p>Todas las transacciones realizadas en este sitio web están sujetas a un proceso de confirmación y
+            verificación. En algunos casos puede requerirse validación por medio de correo electrónico.</p>
+
+        <p>Los precios de los servicios ofrecidos en esta web son válidos únicamente para las suscripciones realizadas
+            dentro del sitio.</p>
+
+        <h2>Licencia</h2>
+        <p><strong>Ecorisk</strong>, a través de su sitio web, concede una licencia para que los usuarios utilicen los
+            servicios que son ofrecidos en este sitio, de acuerdo a los términos descritos en este documento.</p>
+
+        <form method="post" action="{{ url_for('terminos') }}">
+            <button type="submit" name="accion" value="aceptar" class="btn aceptar">Aceptar</button>
+            <button type="submit" name="accion" value="rechazar" class="btn rechazar">Rechazar</button>
+        </form>
+    </div>
+</body>
+
+</html>

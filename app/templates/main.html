@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="{{ lang }}">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ texts['home_title'] }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='img/logo.png') }}">
+</head>
+<body>
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="logo">
+            <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo">
+            <span>Ecorisk</span>
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="{{ url_for('home', lang=lang) }}">Home</a></li>
+            <li class="dropdown">
+                <a href="#">{{ texts['menu_title'] }} ▼</a>
+                <ul class="dropdown-menu">
+                    <li><a href="{{ url_for('menu_principal', lang=lang) }}">{{ texts['impactos'] }}</a></li>
+                    <li><a href="{{ url_for('menu_principal', lang=lang) }}">{{ texts['problemas'] }}</a></li>
+                    <li><a href="{{ url_for('menu_principal', lang=lang) }}">{{ texts['tickets'] }}</a></li>
+                </ul>
+            </li>
+            <li><a href="{{ url_for('login', lang=lang) }}">{{ texts['login_title'] }}</a></li>
+            <li><a href="{{ url_for('registro', lang=lang) }}">{{ texts['register_title'] }}</a></li>
+        </ul>
+
+        <!-- Selector de idioma -->
+        <form method="get" action="" class="lang-form">
+            <select name="lang" class="language-selector" onchange="this.form.submit()">
+                <option value="es" {% if lang == 'es' %}selected{% endif %}>🇪🇸 Español</option>
+                <option value="en" {% if lang == 'en' %}selected{% endif %}>🇬🇧 English</option>
+                <option value="fr" {% if lang == 'fr' %}selected{% endif %}>🇫🇷 Français</option>
+            </select>
+        </form>
+    </nav>
+
+    <!-- CONTENIDO -->
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>{{ texts['slogan'] }}</p>
+    </footer>
+</body>
+</html>

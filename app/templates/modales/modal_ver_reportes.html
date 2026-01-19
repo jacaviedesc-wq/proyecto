@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="{{ lang }}">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ texts["dashboard_admin_button3"] }} - EcoRisk</title>
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='img/logo_ecorisk.png') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style_modal_ver_reportes.css') }}">
+</head>
+<body>
+    <div class="modal-container">
+        <h1>{{ texts["dashboard_admin_button3"] }}</h1>
+
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>{{ texts["ticket_id"] }}</th>
+                        <th>{{ texts["ticket_descripcion"] }}</th>
+                        <th>{{ texts["ticket_fecha"] }}</th>
+                        <th>{{ texts["ticket_categoria"] }}</th>
+                        <th>{{ texts["ticket_severidad"] }}</th>
+                        <th>{{ texts["ticket_estado"] }}</th>
+                        <th>{{ texts["ticket_localidad"] }}</th>
+                        <th>{{ texts["ticket_impacto"] }}</th>
+                        <th>{{ texts["ticket_persona"] }}</th>
+                        <th>{{ texts["ticket_estado_tickets"] }}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for ticket in tickets %}
+                    <tr>
+                        <td>{{ ticket.id_ticket }}</td>
+                        <td>{{ ticket.descripcion }}</td>
+                        <td>{{ ticket.fecha_creacion }}</td>
+                        <td>{{ ticket.id_categoria }}</td>
+                        <td>{{ ticket.id_severidad }}</td>
+                        <td>{{ ticket.id_estado }}</td>
+                        <td>{{ ticket.id_localidad }}</td>
+                        <td>{{ ticket.id_impacto }}</td>
+                        <td>{{ ticket.id_persona }}</td>
+                        <td>{{ ticket.estado_tickets }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <button onclick="window.location.href='{{ url_for(dashboard, lang=lang) }}'">
+            {{ texts.get("close_button", "Cerrar") }}
+        </button>
+    </div>
+</body>
+</html>
